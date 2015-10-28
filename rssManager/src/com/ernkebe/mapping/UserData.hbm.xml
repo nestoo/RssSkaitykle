@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2014 8:11:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities">
+ <class name="UserData" table="user_data">
+  <id name="id" type="java.lang.Integer">
+   <column name="id"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="userIp" type="string">
+   <column length="65535" name="user_ip"/>
+  </property>
+   <property generated="never" lazy="false" name="link" type="string">
+   <column length="65535" name="link"/>
+  </property>
+ </class>
+</hibernate-mapping>

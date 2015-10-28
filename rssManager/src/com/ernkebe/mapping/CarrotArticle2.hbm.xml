@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 27, 2015 9:55:11 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities.grouping">
+    <class name="CarrotArticle2" table="carrot_article2">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"/>
+        </id>
+        <property name="articleId" type="java.lang.Integer">
+            <column name="article_id" />
+        </property>
+        <property name="carrotCategoryId" type="java.lang.Integer">
+            <column name="carrot_category_id" />
+        </property>
+    </class>
+</hibernate-mapping>

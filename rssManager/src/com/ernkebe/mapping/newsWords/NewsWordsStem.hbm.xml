@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 17, 2015 11:31:38 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities.newsWords">
+    <class name="NewsWordsStem" table="news_words_stem">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property generated="never" lazy="false" name="word" type="string">
+   			<column length="65535" name="word" not-null="true"/>
+ 		</property>
+    </class>
+</hibernate-mapping>

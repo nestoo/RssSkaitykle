@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"  xmlns:f="http://java.sun.com/jsf/core">
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+	<h:outputScript library="primefaces" name="jquery/jquery-plugins.js"/>
+   
+   
+    <h:head>
+        <title>Lietuviškų naujienų agregatorius</title>
+        <link rel="stylesheet" type="text/css" href="style.css"></link>
+    </h:head>
+   <h:body>
+   <h:form id="tiesiogiai_naujienos">
+   <h:messages id="errorMessages" style="color:red;margin:8px;" />
+		<p:tabMenu activeIndex="#{tiesiogiaiPage.activeIndex}">
+		 <p:menuitem value="Pradžia"  outcome="index" 	>
+			<f:param name="activeIndex" value="0" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Originalios naujienos" outcome="originalios_naujienos">
+		  	<f:param name="activeIndex" value="1" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Naujienos tiesiogiai iš šaltinio" outcome="tiesiogiai_naujienos"  >
+		  	<f:param name="activeIndex" value="2" />	
+		  </p:menuitem>
+		 
+		   <p:menuitem value="Raktažodžiai" outcome="raktazodziai" >
+		  	<f:param name="activeIndex" value="3" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Smėlio dėžė" outcome="smelio_deze" >
+		  	<f:param name="activeIndex" value="4" />	
+		  </p:menuitem>
+		</p:tabMenu>
+	
+	 		<h:panelGrid columns="2" >
+		 		<p:commandButton value="Atnaujinti" actionListener="#{tiesiogiaiPage.changeSaltinis}" update="tiesiogiai_naujienos" />
+		 		<p:outputLabel id="site" value="#{tiesiogiaiPage.selectedSaltinis.name}" />
+		 	</h:panelGrid>
+		 	
+		 	<div id="nav">
+		 		<p:selectOneListbox id="sites" value="#{tiesiogiaiPage.selectedSaltinis}" converter="sitesConverter" style="width:200px;">
+		            <f:selectItems value="#{tiesiogiaiPage.saltiniai}" var="site" itemLabel="#{site.name}" itemValue="#{site}" />
+		        </p:selectOneListbox>
+	        </div>
+	        <div id="section">
+	 		<p:feedReader value="#{tiesiogiaiPage.feedLink}" var="feed" rendered="#{tiesiogiaiPage.feedLink != null}"  style="float:right; width: 75%;">
+				<h:outputText value="#{feed.title}" style="font-weight: bold"/>
+				<h:outputText value="#{feed.description.value}" escape="false"/>
+				<p:separator />
+				<f:facet name="error">
+				Kažkas negerai.
+				</f:facet>
+			</p:feedReader>
+			</div>
+		</h:form>
+    </h:body>
+</html>

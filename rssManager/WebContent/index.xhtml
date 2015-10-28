@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"  xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Lietuviškų naujienų agregatorius</title>
+          <link rel="stylesheet" type="text/css" href="style.css"></link>
+    </h:head>
+
+   <h:body>
+    <h:form id="main_panel">
+     <h:messages id="errorMessages" style="color:red;margin:8px;" />
+ 
+	<p:tabMenu activeIndex="#{mainPage.activeIndex}">
+		 <p:menuitem value="Pradžia"  outcome="index">
+			<f:param name="activeIndex" value="0" />	
+		 </p:menuitem>
+		  
+		 <p:menuitem value="Originalios naujienos" outcome="originalios_naujienos" >
+		  	<f:param name="activeIndex" value="1" />	
+		 </p:menuitem>
+		  
+		 <p:menuitem value="Naujienos tiesiogiai iš šaltinio" outcome="tiesiogiai_naujienos" >
+		  	<f:param name="activeIndex" value="2" />	
+		 </p:menuitem>
+		 
+		 <p:menuitem value="Raktažodžiai" outcome="raktazodziai">
+		  	<f:param name="activeIndex" value="3" />	
+		 </p:menuitem>
+		 
+		 <p:menuitem value="Smėlio dėžė" outcome="smelio_deze">
+		  	<f:param name="activeIndex" value="4" />	
+		 </p:menuitem>
+		  
+	</p:tabMenu>
+	
+	<br></br>
+ 		<p:dashboard id="board" model="#{mainPage.model}">
+          
+            <p:panel id="newsforDay" header="Naujienų pasiskirstymas pagal dienas" style="margin: 2px 2px; width: 920px;" closable="true" toggleable="true">
+          		<br></br>
+                <p:barChart id="news_per_day" value="#{mainPage.newsByDatemodel}" style="margin: 2px 2px; height: 400px;  width: 900px;" zoom="true"/>
+               	
+            </p:panel>
+             <p:panel id="news" header="Naujienų pasiskirstymas pagal šaltinius" style="margin: 2px 2px; width: 520px;" closable="true" toggleable="true">
+          		<br></br>
+                <p:barChart id="news_per_site" value="#{mainPage.newsmodel}" orientation="horizontal"  style="height: 800px;  width: 500px;" zoom="true"/>
+            </p:panel>
+            <p:panel id="keywords" header="Top raktažodžiai" style="margin: 2px 2px;" closable="true" toggleable="true">
+          		<br></br>
+                <h:outputText value="Top raktažodžiai ir skaičius naujienų" />
+                <br></br>
+                <p:inputTextarea value="#{mainPage.topKey}" styleClass="inputTextStyle"
+                	rows="15" cols="30" autoResize="false" />
+            </p:panel>
+ 
+            <p:panel id="keystem" header="Top kamienizuoti raktažodžiai" style="margin: 2px 2px;" closable="true" toggleable="true">
+            	<br></br>
+                <h:outputText value="Top kamienizuoti raktažodžiai ir skaičius naujienų" />
+                <br></br>
+                <p:inputTextarea value="#{mainPage.topStemKey}" styleClass="inputTextStyle" 
+                	rows="15" cols="30" autoResize="false"/>
+            </p:panel>
+            
+            
+        </p:dashboard>
+         <div style="clear:both" />
+    </h:form>
+    </h:body>
+</html>

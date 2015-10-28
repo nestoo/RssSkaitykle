@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 23, 2014 10:57:29 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities.views">
+    <class name="VwCommonWordsEndsSimpe" table="vw_common_words_ends_simpe">
+        <id name="wordEnd" type="java.lang.String">
+            <column name="word_end" />
+            <generator class="assigned" />
+        </id>
+        <property name="frequency" type="int">
+            <column name="frequency" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    width:205px;
+    float:left;
+    padding:5px; 
+}
+#section {
+    width:550px;
+    float:left;
+    padding:10px; 
+}
+#nav_org_nauj {
+    line-height:30px;
+    background-color:#eeeeee;
+    width:405px;
+    float:left;
+    padding:5px; 
+}
+#section_org_nauj {
+    width:650px;
+    float:left;
+    padding:10px; 
+}
+.no-border {
+    border-style: hidden !important ; /* or none */
+}
+inputTextStyle {
+    width: 200px;
+    height: 400px;
+    padding: 5px;
+}
+.barcharstyle{
+	
+}
+
+.barcharstyle .jqplot-xaxis-tick{
+		transform: rotate(90deg);
+}
+

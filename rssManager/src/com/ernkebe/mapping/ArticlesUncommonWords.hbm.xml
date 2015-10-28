@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 5, 2014 12:50:49 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities">
+    <class  name="ArticlesUncommonWords" table="articles_uncommon_words">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"/>
+        </id>
+        <property generated="never" name="articleId" lazy="false" type="int">
+            <column name="article_id" not-null="true"/>
+        </property>
+        <property generated="never" name="uncommonSimpleWords" lazy="false" type="string">
+            <column name="uncommon_simple_words" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

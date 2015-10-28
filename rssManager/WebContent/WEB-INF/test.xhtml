@@ -1,0 +1,39 @@
+<p:panelGrid columns="2">
+		<p:panelGrid columns="2" columnClasses="no-border,no-border">
+			
+			<p:selectBooleanCheckbox value="#{smelioDezePage.lingo}" />
+			<p:outputLabel value="LingoClusteringAlgorithm" />
+			
+			<p:selectBooleanCheckbox value="#{smelioDezePage.kmeans}" />
+			<p:outputLabel value="BisectingKMeansClusteringAlgorithm" />
+			
+			<p:selectBooleanCheckbox value="#{smelioDezePage.stcc}" />
+			<p:outputLabel value="STCClusteringAlgorithm" />
+		</p:panelGrid>
+				
+		
+		<p:panelGrid columns="2" columnClasses="no-border,no-border">
+	 				<p:outputLabel value="Originalus tekstas" />
+	 				<p:selectBooleanCheckbox value="#{smelioDezePage.originalus}" />
+	 				
+	 				<p:outputLabel value="Originalus tekstas be nereikšminių žodžių" />
+	 				<p:selectBooleanCheckbox value="#{smelioDezePage.originalusBeDazniausiu}" />
+	 				
+	 				<p:outputLabel value="Originalus kamienizuotas tekstas be nereikšminių žodžių" />
+	 				<p:selectBooleanCheckbox value="#{smelioDezePage.originalusStemBeDazniausiu}" />
+	 				
+	 				<p:outputLabel value="Prasminiai unikalūs žodžiai" />
+	 				<p:selectBooleanCheckbox value="#{smelioDezePage.prasminiai}" />
+	 				
+	 				<p:outputLabel value="Kamienizuoti unikalūs žodžiai" />
+	 				<p:selectBooleanCheckbox value="#{smelioDezePage.kamienizuoti}" />
+	 	</p:panelGrid>
+	</p:panelGrid>
+	<p:commandButton value="Atnaujinti" actionListener="#{smelioDezePage.search}"  />
+	<p:commandButton value="Eksportuoti" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" actionListener="#{smelioDezePage.exportArticles}">
+        		<p:fileDownload value="#{smelioDezePage.articlesFile}" />
+    </p:commandButton>
+	
+	 <p:inputTextarea value="#{smelioDezePage.bendraInfo}" styleClass="inputTextStyle"
+                	rows="10" cols="200" autoResize="false" />
+                	

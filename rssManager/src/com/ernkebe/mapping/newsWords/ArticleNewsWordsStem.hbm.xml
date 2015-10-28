@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 17, 2015 11:31:28 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities.newsWords">
+    <class name="ArticleNewsWordsStem" table="article_news_words_stem">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property generated="never" lazy="false" name="articleId" type="int">
+   			<column name="article_id" not-null="true"/>
+  		</property>
+  		 <property generated="never" lazy="false" name="wordId" type="int">
+   			<column name="word_id" not-null="true"/>
+  		</property>
+        <property generated="never" lazy="false" name="frequency" type="int">
+   			<column name="frequency" not-null="true"/>
+  		</property>
+    </class>
+</hibernate-mapping>

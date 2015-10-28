@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2014 8:11:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ernkebe.entities.initial">
+ <class name="Article" table="article">
+  <id name="articleId" type="java.lang.Integer">
+   <column name="article_id"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="title" type="string">
+   <column length="65535" name="title" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="link" type="string">
+   <column length="500" name="link"/>
+  </property>
+  <property generated="never" lazy="false" name="description" type="string">
+   <column length="65535" name="description"/>
+  </property>
+  <property generated="never" lazy="false" name="pubDate" type="timestamp">
+   <column length="0" name="pub_date"/>
+  </property>
+  <property generated="never" lazy="false" name="updateDate" type="timestamp">
+   <column length="0" name="update_date"/>
+  </property>
+  <property generated="never" lazy="false" name="siteId" type="int">
+   <column name="site_id" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="fullText" type="string">
+   <column length="65535" name="full_text"/>
+  </property>
+  <property generated="never" lazy="false" name="wordsCount" type="int">
+   <column name="words_count"/>
+  </property>
+  <bag inverse="true" lazy="true" name="categories" table="article_categories">
+   <key column="article_id"/>
+   <one-to-many class="ArticleCategories"/>
+  </bag>
+  <one-to-one name="uncommonWords" class="com.ernkebe.entities.ArticlesUncommonWords"></one-to-one>
+  <one-to-one name="uncommonWordsStem" class="com.ernkebe.entities.ArticlesUncommonWordsStem"></one-to-one>
+   
+ </class>
+</hibernate-mapping>

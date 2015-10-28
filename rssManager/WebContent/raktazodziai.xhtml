@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"  xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+	<h:outputScript library="primefaces" name="jquery/jquery-plugins.js"/>
+   
+   
+    <h:head>
+        <title>Lietuviškų naujienų agregatorius</title>
+        <link rel="stylesheet" type="text/css" href="style.css"></link>
+    </h:head>
+   <h:body>
+   <h:form id="raktazodziai_panel">
+   <h:messages id="errorMessages" style="color:red;margin:8px;" />
+		<p:tabMenu activeIndex="#{raktazodziaiPage.activeIndex}">
+		 <p:menuitem value="Pradžia"  outcome="index"  >
+			<f:param name="activeIndex" value="0" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Originalios naujienos" outcome="originalios_naujienos" >
+		  	<f:param name="activeIndex" value="1" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Naujienos tiesiogiai iš šaltinio" outcome="tiesiogiai_naujienos" >
+		  	<f:param name="activeIndex" value="2" />	
+		  </p:menuitem>
+		 
+		 <p:menuitem value="Raktažodžiai" outcome="raktazodziai" >
+		  	<f:param name="activeIndex" value="3" />	
+		  </p:menuitem>
+		  
+		  <p:menuitem value="Smėlio dėžė" outcome="smelio_deze"  >
+		  	<f:param name="activeIndex" value="4" />	
+		  </p:menuitem>
+	</p:tabMenu>
+	<p:panelGrid columns="4" columnClasses="no-border,no-border, no-border, no-border">
+		<p:outputLabel value="Kamienizuoti raktažodžiai" />
+ 		<p:selectBooleanCheckbox value="#{raktazodziaiPage.stemKeywords}" />
+ 		<p:commandButton value="Grupuoti" actionListener="#{raktazodziaiPage.constructKeywordsDistinctSets}" />
+ 		
+	</p:panelGrid>
+	 	
+ 	<p:dataTable 	var="article" 
+ 					value="#{raktazodziaiPage.groupArticles}"
+ 					paginator="true" 
+ 					rows="20"
+ 					emptyMessage="Tuščia"
+ 					rendered="#{raktazodziaiPage.groupArticles.size() > 0}">
+		<p:column headerText="Giliau">
+			<p:commandLink actionListener="#{raktazodziaiPage.openKeysGroup}" value="Giliau" >
+				<f:attribute name="currentRow" value="#{article}"/>
+			</p:commandLink>
+		</p:column>
+		
+		<p:column sortBy="title" headerText="Top 10 raktažodžių grupėje">
+			<h:outputText value="#{article.title}" />
+		</p:column>
+				
+		<p:column sortBy="keycount" headerText="Viso raktažodžių kiekis" style="width: 50 px;">
+			<h:outputText value="#{article.keycount}" />
+		</p:column>
+		<p:column sortBy="newscount" headerText="Naujienų skaičius grupėje" style="width: 50 px;">
+			<h:outputText value="#{article.newscount}" />
+		</p:column>
+		<p:column sortBy="news" headerText="Naujienos">
+			<p:scrollPanel style="height:200px">
+				<h:outputText value="#{article.news}" escape="false" />
+			</p:scrollPanel>
+			
+		</p:column>
+		
+		<f:facet name="footer">
+			<p:outputLabel value="Iš viso #{raktazodziaiPage.groupArticles.size()}" />
+		</f:facet>
+	</p:dataTable>
+		
+	</h:form>
+    </h:body>
+</html>
